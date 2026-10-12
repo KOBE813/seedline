@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nondiscrimination checker | Seedline</title><meta name="description" content="Run the three Section 128 nondiscrimination tests, including the 55% average benefits test, in your browser."><meta name="theme-color" content="#0f2a1f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f2a1f'/%3E%3Cpath d='M16 26V14' stroke='%23f3ecdc' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 16c0-5 3-8 8-8 0 5-3 8-8 8z' fill='%23e8ff6b'/%3E%3Cpath d='M16 19c0-4-2.5-6.5-6.5-6.5 0 4 2.5 6.5 6.5 6.5z' fill='%23f3ecdc'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../plan/plan.css"><link rel="stylesheet" href="../assets/app.css"><link rel="stylesheet" href="test.css"></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="mark" viewBox="0 0 32 32"><path d="M16 27V14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 16c0-5.5 3.2-8.6 8.6-8.6 0 5.5-3.1 8.6-8.6 8.6z" fill="var(--leaf,#e8ff6b)"/><path d="M16 19.5c0-4.3-2.6-6.9-6.9-6.9 0 4.3 2.6 6.9 6.9 6.9z" fill="currentColor"/><path d="M10 27h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol></defs></svg>
+<header class="nav noprint"><div class="wrap navin">
+<a class="logo" href="../" aria-label="Seedline home"><svg class="logomark"><use href="#mark"/></svg><span>Seedline</span></a>
+<nav aria-label="Primary"><a href="../plan/">Plan</a><a href="../enroll/">Sign-up forms</a><a href="../test/" aria-current=page>Testing</a><a href="../payroll/">Payroll</a><a href="../app/">Dashboard</a></nav>
+<a class="btn sm" href="../#signup">Get early access</a></div></header>
+<main id="main">
+<section class="phead noprint"><div class="wrap">
+<p class="eyebrow"><span class="dot"></span>Nondiscrimination checker <span class="sep">/</span> Beta <span class="sep">/</span> Runs in your browser</p>
+<h1 class="ph1">Run the <em>three tests.</em></h1>
+<p class="lead">Check a Trump Account contribution program against the proposed § 1.128-3 rules: contributions, eligibility, and the 55% average benefits test. You get a pass or fail on each, with the fix if one fails.</p>
+<div class="pickrow" id="pick"></div>
+<div class="databar" id="databar"></div>
+</div></section>
+<section class="builder noprint"><div class="wrap mgrid">
+<div class="card tcard">
+ <p class="kicker">Step 01 — Settings</p><h2 class="sh">Plan year and thresholds</h2>
+ <div class="row"><label class="fld"><span>Plan year</span><input type="number" id="py" value="2026" min="2026" max="2035"></label>
+ <label class="fld"><span>HCE pay threshold (prior-year comp)</span><input type="number" id="thr" value="160000" step="1000"></label></div>
+ <label class="chk"><input type="checkbox" id="srdis"><span>Contributions are by salary reduction: ignore employees paid under $25,000 in the 55% test</span></label>
+ <p class="hint">$160,000 is the HCE threshold for 2026 determinations (Notice 2025-67), compared to the employee's pay in the look-back year (2025). Employees who own more than 5% are always HCEs. The optional top-paid-group election isn't modeled.</p>
+ <p class="kicker gap2">Step 02 — Employees</p><h2 class="sh">Upload a CSV or type them in</h2>
+ <div class="csvrow"><label class="btn sm">Upload CSV<input type="file" id="csv" accept=".csv,text/csv" hidden></label><button type="button" class="tbtn" id="spass">Load passing sample</button><button type="button" class="tbtn" id="sfail">Load failing sample</button><button type="button" class="tbtn" id="dlsample">Download sample CSV</button><button type="button" class="tbtn" id="add">+ Add row</button></div>
+ <p class="hint mono2">Columns: name, prior_year_comp, owner_pct, age, years_service, union, self_employed, eligible, contribution, pilot_match. Flags are yes/no. contribution = total section 128 dollars for the plan year; pilot_match = the part of it that is a pilot-deposit match.</p>
+ <div class="tblwrap"><table class="tbl ed" id="grid"><thead><tr><th>Name</th><th class="n">Prior-yr comp</th><th class="n">Own %</th><th class="n">Age</th><th class="n">Yrs svc</th><th>Union</th><th>Self-emp</th><th>Eligible</th><th class="n">Contrib $</th><th class="n">Pilot match $</th><th></th></tr></thead><tbody></tbody></table></div>
+ <p class="formerr" id="err" role="alert"></p>
+ <div class="nav2"><span class="mono small" id="cnt"></span><button class="btn" id="run" type="button">Run the three tests <span class="arr" aria-hidden="true">→</span></button></div>
+</div>
+<aside class="side"><div class="scard"><p class="mono small">The three tests · § 1.128-3</p>
+<ul><li><b>Contributions &amp; benefits:</b> can't favor HCEs or their dependents.</li><li><b>Eligibility:</b> the classification can't favor HCEs. Safe harbor: ratio percentage ≥ 90% minus ¾ point per point of NHCE concentration over 60%.</li><li><b>Average benefits:</b> NHCE average ≥ 55% of HCE average.</li></ul>
+<p>Left out of tests 2 and 3: employees who haven't reached 21 <i>and</i> 1 year of service, and union employees not in the plan. Pilot-match dollars are ignored for tests 1 and 3.</p></div>
+<p class="unc2">Test 1 is facts-and-circumstances. This tool flags HCEs getting more than NHCEs under the plan, but can't prove a pass.</p></aside>
+</div></section>
+<section class="out2" id="out" hidden><div class="wrap"><div class="toolbar noprint"><div><p class="kicker">Results</p><h2 class="sh" id="rtitle">Nondiscrimination results</h2></div><div class="tbtns"><button class="btn ghost sm" id="csvout">Download results CSV</button><button class="btn sm" onclick="print()">Print / PDF <span class="arr">↓</span></button></div></div><div id="res"></div></div></section>
+<section class="sec srcs" id="sources"><div class="wrap faqgrid">
+<div class="sechead"><p class="kicker">Sources</p><h2>What this is <em>built on.</em></h2><p class="sub">Checked October 12, 2026. Anything marked ⚑ is unsettled or unverified. Have an advisor confirm before relying on it.</p></div>
+<ol class="srclist"><li><a class="link" href="https://www.federalregister.gov/documents/2026/08/11/2026-16314/employer-contributions-to-trump-accounts-and-nondiscrimination-rules-for-dependent-care-assistance" target="_blank" rel="noopener">Proposed regulations REG-101355-26</a>, 91 Fed. Reg. 51611 (Aug. 11, 2026): proposed §§ 1.128-1 to 1.128-3. Taxpayers may rely on them for plan years before final rules.</li><li><a class="link" href="https://www.irs.gov/irb/2026-37_irb" target="_blank" rel="noopener">Internal Revenue Bulletin 2026-37</a>, the same proposed regulations as published by the IRS.</li><li><a class="link" href="https://www.irs.gov/pub/irs-drop/n-25-67.pdf" target="_blank" rel="noopener">IRS Notice 2025-67</a>: the § 414(q)(1)(B) HCE compensation threshold remains $160,000 (look-back year compensation is used).</li></ol></div></section>
+</main>
+<footer class="noprint"><div class="wrap foot">
+<a class="logo" href="../"><svg class="logomark"><use href="#mark"/></svg><span>Seedline</span></a>
+<p><b>Template and educational tool only. Not legal or tax advice.</b> Built on proposed IRS regulations (Aug 2026), which aren't final and may change. Have a qualified tax advisor or benefits attorney review results and documents before relying on them. Seedline is not affiliated with the IRS, the U.S. Treasury, any payroll provider, or any government agency. Your data stays in this browser and is never sent or stored by Seedline.</p><p class="mono small">© 2026 Seedline · Beta</p></div></footer>
+<script src="../assets/store.js"></script><script src="test.js"></script>
+</body></html>
