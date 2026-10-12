@@ -243,3 +243,5 @@ footer{padding:56px 0 64px;border-top:1px solid var(--line)}
 .panel{bottom:40px}
 @media (max-width:640px){.chip{bottom:auto;top:24px;left:-2px;right:auto}.doc{top:40px}.panel{bottom:0}}
 @media (max-width:640px){.art{height:500px}.doc{top:72px}.chip{top:8px}}
+
+.betacta{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;text-decoration:none;color:var(--moss);padding:7px 14px 7px 8px;border-radius:999px;background:rgba(232,255,107,.55);transition:background .2s}.betacta:hover{background:var(--sprout)}.betacta .mono{font-size:10px;background:var(--ink);color:var(--sprout);padding:3px 7px;border-radius:999px}
