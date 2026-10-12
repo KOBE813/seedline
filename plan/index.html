@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plan builder (beta): Trump Account contribution plan template | Seedline</title>
+<meta name="description" content="Draft a Section 128 Trump Account contribution plan and employee notice in your browser. Free template based on the proposed IRS regulations. Nothing is stored.">
+<meta name="theme-color" content="#0f2a1f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f2a1f'/%3E%3Cpath d='M16 26V14' stroke='%23f3ecdc' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 16c0-5 3-8 8-8 0 5-3 8-8 8z' fill='%23e8ff6b'/%3E%3Cpath d='M16 19c0-4-2.5-6.5-6.5-6.5 0 4 2.5 6.5 6.5 6.5z' fill='%23f3ecdc'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="plan.css"></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="mark" viewBox="0 0 32 32"><path d="M16 27V14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 16c0-5.5 3.2-8.6 8.6-8.6 0 5.5-3.1 8.6-8.6 8.6z" fill="var(--leaf,#e8ff6b)"/><path d="M16 19.5c0-4.3-2.6-6.9-6.9-6.9 0 4.3 2.6 6.9 6.9 6.9z" fill="currentColor"/><path d="M10 27h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="nav noprint"><div class="wrap navin">
+<a class="logo" href="../" aria-label="Seedline home"><svg class="logomark"><use href="#mark"/></svg><span>Seedline</span></a>
+<nav aria-label="Primary"><a href="../#how">How it works</a><a href="../#checker">Checker</a><a href="#sources">Sources</a></nav>
+<a class="btn sm" href="../#signup">Get early access</a></div></header>
+
+<main id="main">
+<section class="phead noprint"><div class="wrap">
+<p class="eyebrow"><span class="dot"></span>Plan builder <span class="sep">/</span> Beta <span class="sep">/</span> Runs in your browser</p>
+<h1 class="ph1">Draft your Section 128 <em>written plan.</em></h1>
+<p class="lead">Answer six short steps. You get a Trump Account contribution plan and a one-page employee notice, ready for your advisor to review. Nothing you type leaves this page.</p>
+</div></section>
+
+<section class="builder noprint" id="builder"><div class="wrap bgrid">
+<aside class="rail">
+<ol class="stepper" id="stepper"></ol>
+<div class="railnote"><p class="mono small">Built on</p><p>Proposed regs REG-101355-26 (Aug 11, 2026) and Notice 2025-68. Proposed rules can change. <a class="link" href="#sources">See sources</a></p></div>
+</aside>
+<form class="card" id="f" novalidate>
+<div class="step" data-t="Employer">
+ <p class="kicker">Step 01 — Employer</p><h2 class="sh">Who is adopting the plan?</h2>
+ <div class="row"><label class="fld w2"><span>Employer legal name *</span><input name="name" required placeholder="Acme Widgets, LLC" autocomplete="organization"></label></div>
+ <div class="row"><label class="fld"><span>EIN (optional)</span><input name="ein" placeholder="12-3456789" inputmode="numeric" pattern="\d{2}-?\d{7}"></label>
+ <label class="fld"><span>Entity type *</span><select name="entity" required><option value="">Choose…</option><option>C corporation</option><option>S corporation</option><option>Limited liability company</option><option>Partnership</option><option>Sole proprietorship</option><option>Nonprofit organization</option><option>Other</option></select></label></div>
+ <label class="fld"><span>State of organization (optional)</span><input name="state" placeholder="New Jersey"></label>
+ <p class="hint" id="ownerhint" hidden>Owners in this entity type (partners, sole proprietors, or more-than-2% S corporation shareholders) can sponsor the plan but can't receive contributions under it. The plan text excludes them automatically.</p>
+</div>
+
+<div class="step" data-t="Plan year" hidden>
+ <p class="kicker">Step 02 — Plan year</p><h2 class="sh">When does it start?</h2>
+ <div class="row"><label class="fld"><span>Effective date *</span><input type="date" name="eff" required></label>
+ <label class="fld"><span>Plan year</span><select name="py"><option value="cal">Calendar year (Jan 1 – Dec 31)</option><option value="fiscal">Same as employer's fiscal year</option></select></label></div>
+ <label class="fld" id="fyw" hidden><span>Fiscal year begins (month/day)</span><input name="fy" placeholder="July 1"></label>
+ <p class="hint">A calendar plan year lines up with the $2,500 annual exclusion, which is counted per calendar year, and with W-2 reporting.</p>
+</div>
+
+<div class="step" data-t="Eligibility" hidden>
+ <p class="kicker">Step 03 — Eligibility</p><h2 class="sh">Which employees can take part?</h2>
+ <div class="opts">
+  <label class="opt"><input type="radio" name="elig" value="all" checked><span><b>All employees</b><i>Eligible from their first day. Simplest to defend.</i></span></label>
+  <label class="opt"><input type="radio" name="elig" value="wait"><span><b>After a waiting period</b><i>Eligible after a set number of months of service.</i></span></label>
+ </div>
+ <div class="row" id="waitw" hidden><label class="fld"><span>Months of service (1–12)</span><input type="number" name="months" min="1" max="12" value="3"></label></div>
+ <p class="mono small gap">Optional exclusions</p>
+ <label class="chk"><input type="checkbox" name="age21"><span>Exclude employees under age 21</span></label>
+ <label class="chk"><input type="checkbox" name="cba"><span>Exclude employees covered by a collective bargaining agreement</span></label>
+ <label class="chk"><input type="checkbox" name="pt"><span>Exclude part-time employees (regularly under <input class="inl" type="number" name="pthrs" min="1" max="39" value="20"> hours a week)</span></label>
+ <p class="warn" id="ptwarn" hidden>Heads up: part-time isn't one of the automatic testing exclusions. It's allowed only if the eligibility classification still passes the nondiscrimination test. Ask your advisor to run it.</p>
+ <p class="hint">Under the proposed rules, employees under 21 with less than one year of service, and certain union employees, can be left out when you test for discrimination. A waiting period of 12 months or less fits inside that.</p>
+</div>
+
+<div class="step" data-t="Contributions" hidden>
+ <p class="kicker">Step 04 — Contributions</p><h2 class="sh">How much will you contribute?</h2>
+ <div class="opts">
+  <label class="opt"><input type="radio" name="form" value="emp" checked><span><b>Flat amount per employee</b><i>Same dollar amount for each participant, into their own or a child's account.</i></span></label>
+  <label class="opt"><input type="radio" name="form" value="child"><span><b>Flat amount per eligible child</b><i>A set amount for each dependent's account, capped per employee.</i></span></label>
+  <label class="opt"><input type="radio" name="form" value="pilot"><span><b>Match the $1,000 federal pilot deposit</b><i>For children born 2025–2028 who get the Treasury pilot contribution. Has its own testing safe harbor.</i></span></label>
+ </div>
+ <div class="row"><label class="fld"><span id="amtlab">Amount per employee, per year ($) *</span><input type="number" name="amt" min="1" step="1" value="500" required></label>
+ <label class="fld"><span>When it's paid</span><select name="timing"><option value="annual">Once a year</option><option value="quarterly">Quarterly</option><option value="payroll">Each payroll period, prorated</option></select></label></div>
+ <p class="meter" id="meter"></p>
+ <label class="chk"><input type="checkbox" name="sr"><span>Also let employees add their own pre-tax money (cafeteria plan salary reduction) to a <u>child's</u> account</span></label>
+ <p class="hint">The $2,500 exclusion is per employee, not per child, and counts both your contributions and any salary reductions. Salary reduction can go only to a dependent's account, and needs a separate Section 125 cafeteria plan.</p>
+</div>
+
+<div class="step" data-t="Payroll" hidden>
+ <p class="kicker">Step 05 — Payroll</p><h2 class="sh">Who runs payroll?</h2>
+ <label class="fld"><span>Payroll provider</span><select name="payroll"><option>Gusto</option><option>ADP</option><option>Paychex</option><option>QuickBooks Payroll</option><option>Rippling</option><option>Paylocity</option><option>In-house / my accountant</option><option>Other</option></select></label>
+ <p class="hint">Your payroll setup needs to treat contributions as excluded from federal income tax but still subject to FICA and FUTA, and report them in Form W-2 box 12 with code TA.</p>
+</div>
+
+<div class="step" data-t="Administrator" hidden>
+ <p class="kicker">Step 06 — Administrator</p><h2 class="sh">Who answers questions?</h2>
+ <div class="row"><label class="fld"><span>Plan administrator (name or title) *</span><input name="admin" required placeholder="Jane Rivera, HR Manager"></label>
+ <label class="fld"><span>Email *</span><input type="email" name="aemail" required placeholder="hr@company.com"></label></div>
+ <div class="row"><label class="fld"><span>Phone (optional)</span><input name="aphone" placeholder="(555) 010-2000"></label>
+ <label class="fld"><span>Authorized signer (optional)</span><input name="signer" placeholder="Sam Lee, President"></label></div>
+</div>
+
+<p class="formerr" id="err" role="alert"></p>
+<div class="nav2"><button type="button" class="btn ghost" id="back">← Back</button><span class="mono small" id="cnt"></span><button type="submit" class="btn" id="next">Continue <span class="arr" aria-hidden="true">→</span></button></div>
+</form>
+</div></section>
+
+<section class="out" id="out" hidden><div class="wrap">
+<div class="toolbar noprint"><div><p class="kicker">Your draft</p><h2 class="sh">Plan + employee notice</h2></div>
+<div class="tbtns"><button class="btn ghost sm" id="edit">← Edit answers</button><button class="btn ghost sm" id="dl">Download HTML</button><button class="btn sm" id="pdf">Save as PDF <span class="arr" aria-hidden="true">↓</span></button></div></div>
+<div id="docs"></div>
+</div></section>
+
+<section class="sec srcs" id="sources"><div class="wrap faqgrid">
+<div class="sechead"><p class="kicker">Sources</p><h2>What this is <em>built on.</em></h2><p class="sub">Every rule above comes from these documents. Where the rules are proposed or unclear, the draft says so.</p></div>
+<ol class="srclist">
+<li><a class="link" href="https://www.federalregister.gov/documents/2026/08/11/2026-16314/employer-contributions-to-trump-accounts-and-nondiscrimination-rules-for-dependent-care-assistance" target="_blank" rel="noopener">Proposed regulations REG-101355-26</a>, 91 Fed. Reg. 51611 (Aug. 11, 2026), FR Doc. 2026-16314: proposed §§ 1.128-1 to 1.128-3. Written plan contents, certification, notice, Jan 31 statement, salary reduction, nondiscrimination, excluded employees, correction.</li>
+<li><a class="link" href="https://www.irs.gov/irb/2026-37_irb" target="_blank" rel="noopener">Internal Revenue Bulletin 2026-37</a>, same proposed regulations as published by the IRS.</li>
+<li>IRC § 128 (added by Pub. L. 119-21, 2025), as summarized in the preamble: $2,500 exclusion per employee, indexed after 2027; plan must meet rules similar to § 129(d)(2), (3), (6), (7) and (8).</li>
+<li>IRS Notice 2025-68, Q&amp;A I-1 and I-2, as quoted in the preamble: limit is per employee, not per dependent.</li>
+<li>2026 General Instructions for Forms W-2 and W-3, as cited in the preamble: box 12, code TA.</li>
+<li><a class="link" href="https://www.troutman.com/insights/irs-proposed-regulations-provide-initial-guidance-for-employers-offering-trump-account-benefits-to-employees/" target="_blank" rel="noopener">Troutman Pepper Locke</a> and <a class="link" href="https://taxnews.ey.com/news/2026-1779-employer-contribution-rules-for-trump-accounts-would-clarify-nondiscrimination-requirements-and-cafeteria-plan-administration" target="_blank" rel="noopener">EY Tax News</a> summaries of the proposed regulations.</li>
+</ol></div></section>
+</main>
+
+<footer class="noprint"><div class="wrap foot">
+<a class="logo" href="../"><svg class="logomark"><use href="#mark"/></svg><span>Seedline</span></a>
+<p><b>Template only. Not legal or tax advice.</b> The plan builder fills in a general template based on proposed IRS regulations (Aug 2026), which aren't final and may change. Have a qualified tax advisor or benefits attorney review and adapt any document before you adopt it. Seedline is not affiliated with the IRS, the U.S. Treasury, or any government agency. Your answers stay in your browser and are never sent or stored.</p><p class="mono small">© 2026 Seedline · Beta</p></div></footer>
+<script src="plan.js"></script>
+</body></html>
