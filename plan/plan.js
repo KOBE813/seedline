@@ -29,7 +29,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const money=n=>'$'+Number(n).toLocaleString('en-US');
 function fmtDate(v){if(!v)return'';const[y,m,d]=v.split('-');return new Date(+y,m-1,+d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});}
 let html='';
-function build(){
+var build=function(){
  const d=Object.fromEntries(new FormData(f));['age21','cba','pt','sr'].forEach(k=>d[k]=!!$(k).checked);
  const N=esc(d.name),eff=fmtDate(d.eff),PN=`${N} Trump Account Contribution Plan`,amt=Math.min(LIMIT,+d.amt);
  const owner=/S corp|Limited|Partnership|Sole/.test(d.entity);
@@ -90,5 +90,12 @@ const DOCCSS=`body{font:15px/1.6 Georgia,serif;color:#0f2a1f;max-width:760px;mar
 document.getElementById('edit').onclick=()=>{document.getElementById('out').hidden=true;document.getElementById('builder').hidden=false;document.querySelector('.phead').hidden=false;show(0);};
 document.getElementById('pdf').onclick=()=>window.print();
 document.getElementById('dl').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));a.download='trump-account-contribution-plan.html';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);};
-show(0);sync();
+let client=null,lastD=null;
+const KEYS=['name','ein','entity','state','eff','py','fy','months','pthrs','amt','timing','payroll','admin','aemail','aphone','signer'];
+function fillFrom(c){client=c;if(!c)return;const a=c.plan||{};KEYS.forEach(k=>{const v=a[k]??({name:c.name,ein:c.ein,eff:c.pystart,payroll:c.payroll,admin:c.admin,aemail:c.aemail})[k];if(v!=null&&v!==''&&f.elements[k])f.elements[k].value=v});['elig','form'].forEach(k=>{if(a[k]){const r=f.querySelector(`input[name=${k}][value="${a[k]}"]`);if(r)r.checked=true}});['age21','cba','pt','sr'].forEach(k=>{if(a[k]!=null)$(k).checked=!!a[k]});sync();}
+function saveTo(id){const d=Object.fromEntries(new FormData(f));['age21','cba','pt','sr'].forEach(k=>d[k]=$(k).checked);SL.patch(id,c=>{c.plan=d;c.status.plan=true;c.name=c.name||d.name;c.payroll=c.payroll||d.payroll;c.admin=c.admin||d.admin;c.aemail=c.aemail||d.aemail;if(!c.pystart)c.pystart=d.eff});}
+const _build=build;build=function(){_build();const q=client?'?client='+encodeURIComponent(client.id):'';document.querySelectorAll('#nextup a').forEach(a=>a.href=a.getAttribute('href').split('?')[0]+q);if(client){saveTo(client.id);SL.toast('Saved to '+client.name)}};
+document.getElementById('save').onclick=()=>{if(client){saveTo(client.id);SL.toast('Saved to '+client.name);return}const d=Object.fromEntries(new FormData(f));const id=SL.upsert({name:d.name,ein:d.ein,pystart:d.eff,payroll:d.payroll,admin:d.admin,aemail:d.aemail,py:+String(d.eff).slice(0,4)});saveTo(id);client=SL.get(id);SL.toast('Added '+d.name+' to your dashboard');SL.picker(document.getElementById('pick'),fillFrom);};
+SL.bar(document.getElementById('databar'),()=>SL.picker(document.getElementById('pick'),fillFrom));
+show(0);sync();SL.picker(document.getElementById('pick'),fillFrom);
 })();
