@@ -1,0 +1,11 @@
+.tcard{min-height:0}.gap2{margin-top:36px}
+.form1 .fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 18px;margin:12px 0 4px}
+.fbox{display:grid;gap:4px;font-family:var(--sans)}.fbox span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}.fbox i{display:block;height:28px;border-bottom:1px solid var(--ink);font-style:normal;font-size:14px;padding-top:6px}
+.c2{grid-column:span 2}.c4{grid-column:1/-1}
+.acct{border:1px solid var(--line);border-radius:10px;padding:12px 16px 14px;margin:10px 0}.acct .mono{color:var(--clay)}
+.cert{list-style:none;padding:0;margin:8px 0;display:grid;gap:8px}.cert li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:14.5px}
+.cert li::before{content:"";width:14px;height:14px;border:1.3px solid var(--ink);border-radius:3px;margin-top:4px}
+.eonly{background:var(--cream);border-radius:10px;padding:14px 16px;margin-top:20px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.eonly .fgrid{grid-template-columns:repeat(3,1fr)}
+@media (max-width:640px){.form1 .fgrid,.eonly .fgrid{grid-template-columns:1fr 1fr}.c2{grid-column:1/-1}}
+@media print{.paper.form1{font-size:9.6pt;line-height:1.38}.form1 .ptitle{font-size:21pt;margin:10px 0 4px}.form1 .psub{padding-bottom:10px}.form1 section{margin-top:12px}.acct{padding:8px 12px 10px;margin:6px 0}.fbox i{height:22px}.form1 .fgrid{grid-template-columns:repeat(4,1fr)}}

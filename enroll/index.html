@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Employee sign-up form | Seedline</title><meta name="description" content="Generate a Trump Account designation and certification form for employees, per proposed § 1.128-2(d)(4)."><meta name="theme-color" content="#0f2a1f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f2a1f'/%3E%3Cpath d='M16 26V14' stroke='%23f3ecdc' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 16c0-5 3-8 8-8 0 5-3 8-8 8z' fill='%23e8ff6b'/%3E%3Cpath d='M16 19c0-4-2.5-6.5-6.5-6.5 0 4 2.5 6.5 6.5 6.5z' fill='%23f3ecdc'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../plan/plan.css"><link rel="stylesheet" href="../assets/app.css"><link rel="stylesheet" href="enroll.css"></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="mark" viewBox="0 0 32 32"><path d="M16 27V14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M16 16c0-5.5 3.2-8.6 8.6-8.6 0 5.5-3.1 8.6-8.6 8.6z" fill="var(--leaf,#e8ff6b)"/><path d="M16 19.5c0-4.3-2.6-6.9-6.9-6.9 0 4.3 2.6 6.9 6.9 6.9z" fill="currentColor"/><path d="M10 27h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol></defs></svg>
+<header class="nav noprint"><div class="wrap navin">
+<a class="logo" href="../" aria-label="Seedline home"><svg class="logomark"><use href="#mark"/></svg><span>Seedline</span></a>
+<nav aria-label="Primary"><a href="../plan/">Plan</a><a href="../enroll/" aria-current=page>Sign-up forms</a><a href="../test/">Testing</a><a href="../payroll/">Payroll</a><a href="../app/">Dashboard</a></nav>
+<a class="btn sm" href="../#signup">Get early access</a></div></header>
+<main id="main">
+<section class="phead noprint"><div class="wrap">
+<p class="eyebrow"><span class="dot"></span>Sign-up forms <span class="sep">/</span> Beta <span class="sep">/</span> Runs in your browser</p>
+<h1 class="ph1">Employee sign-up <em>and certification.</em></h1>
+<p class="lead">A printable form employees fill out to name the Trump Account that gets your contribution, with the certification the proposed rules call for. Hand it out with the plan notice.</p>
+<div class="pickrow" id="pick"></div>
+<div class="databar" id="databar"></div>
+</div></section>
+<section class="builder noprint"><div class="wrap mgrid">
+<form class="card tcard" id="f" novalidate>
+ <p class="kicker">Step 01 — Employer</p><h2 class="sh">Whose form is this?</h2>
+ <div class="row"><label class="fld w2"><span>Employer legal name *</span><input name="name" required placeholder="Acme Widgets, LLC"></label></div>
+ <div class="row"><label class="fld"><span>Plan administrator *</span><input name="admin" required placeholder="Jane Rivera, HR Manager"></label><label class="fld"><span>Return to (email) *</span><input name="aemail" type="email" required placeholder="hr@company.com"></label></div>
+ <div class="row"><label class="fld"><span>Plan year</span><input name="py" type="number" value="2026" min="2026" max="2035"></label><label class="fld"><span>Return by (optional)</span><input name="due" type="date"></label></div>
+ <p class="kicker gap2">Step 02 — Form options</p><h2 class="sh">What should it include?</h2>
+ <label class="fld"><span>Account rows (children/accounts)</span><select name="rows"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></label>
+ <label class="chk"><input type="checkbox" name="self"><span>Allow the employee's <u>own</u> Trump Account (for employees still in their growth period, age 17 or younger)</span></label>
+ <label class="chk"><input type="checkbox" name="sr"><span>Include a pre-tax salary reduction election (dependents' accounts only, through our cafeteria plan)</span></label>
+ <p class="hint">The form collects the three statements the proposed rules list in § 1.128-2(d)(4): the beneficiary is you or your dependent, their date of birth, and that you know of no reason they can't get a contribution. You can rely on the form unless you know it's wrong, but you still need your own reasonable check that each account is a real Trump Account.</p>
+ <p class="formerr" id="err" role="alert"></p>
+ <div class="nav2"><span class="mono small">Prints on one or two pages</span><button class="btn" type="submit">Build the form <span class="arr" aria-hidden="true">→</span></button></div>
+</form>
+<aside class="side"><div class="scard"><p class="mono small">What the form covers</p><ul><li>Account designation (beneficiary, trustee, account number)</li><li>Certification under § 1.128-2(d)(4)</li><li>Optional pre-tax election, dependents only</li><li>Employer-only verification box</li></ul></div>
+<p class="unc2">Per a law-firm summary of the Sept. 2026 temporary regulations, an unclaimed auto-created account can't receive employer contributions. The form asks employees to confirm the account is claimed.</p></aside>
+</div></section>
+<section class="out2" id="out" hidden><div class="wrap"><div class="toolbar noprint"><div><p class="kicker">Your form</p><h2 class="sh">Trump Account sign-up &amp; certification</h2></div><div class="tbtns"><button class="btn ghost sm" id="edit">← Edit</button><button class="btn ghost sm" id="gotone">Mark 1 sign-up received</button><button class="btn sm" onclick="print()">Print / PDF <span class="arr">↓</span></button></div></div><div id="docs"></div></div></section>
+<section class="sec srcs" id="sources"><div class="wrap faqgrid">
+<div class="sechead"><p class="kicker">Sources</p><h2>What this is <em>built on.</em></h2><p class="sub">Checked October 12, 2026. Anything marked ⚑ is unsettled or unverified. Have an advisor confirm before relying on it.</p></div>
+<ol class="srclist"><li><a class="link" href="https://www.federalregister.gov/documents/2026/08/11/2026-16314/employer-contributions-to-trump-accounts-and-nondiscrimination-rules-for-dependent-care-assistance" target="_blank" rel="noopener">Proposed regulations REG-101355-26</a>, 91 Fed. Reg. 51611 (Aug. 11, 2026): proposed §§ 1.128-1 to 1.128-3. Taxpayers may rely on them for plan years before final rules.</li><li><a class="link" href="https://www.irs.gov/irb/2026-37_irb" target="_blank" rel="noopener">Internal Revenue Bulletin 2026-37</a>, the same proposed regulations as published by the IRS.</li><li><a class="link" href="https://cri.georgetown.edu/wp-content/uploads/2026/06/Trump-Account-Guidance-26-02.pdf" target="_blank" rel="noopener">DOL Technical Release 2026-02</a> (June 17, 2026): salary reduction only to a dependent’s account; $2,500 limit covers salary reduction.</li><li><a class="link" href="https://www.jdsupra.com/legalnews/trump-accounts-as-an-employee-benefit-2168871/" target="_blank" rel="noopener">Kilpatrick, “Trump Accounts as an Employee Benefit”</a> (JD Supra): summary of the Sept. 2026 temporary regulations, under which an unclaimed auto-created account can’t receive section 128 contributions.</li></ol></div></section>
+</main>
+<footer class="noprint"><div class="wrap foot">
+<a class="logo" href="../"><svg class="logomark"><use href="#mark"/></svg><span>Seedline</span></a>
+<p><b>Template and educational tool only. Not legal or tax advice.</b> Built on proposed IRS regulations (Aug 2026), which aren't final and may change. Have a qualified tax advisor or benefits attorney review results and documents before relying on them. Seedline is not affiliated with the IRS, the U.S. Treasury, any payroll provider, or any government agency. Your data stays in this browser and is never sent or stored by Seedline.</p><p class="mono small">© 2026 Seedline · Beta</p></div></footer>
+<script src="../assets/store.js"></script><script src="enroll.js"></script>
+</body></html>
